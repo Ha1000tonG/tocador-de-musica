@@ -1,8 +1,6 @@
-body{
-    background-image: linear-gradient(
-    rgb(59, 88, 93),
-    rgb(29, 40, 42)
-    );
+body {
+    background-image: linear-gradient(rgb(59, 88, 93),
+            rgb(29, 40, 42));
     height: 100vh;
     color: white;
     font-family: sans-serif;
@@ -50,7 +48,7 @@ button {
 
 #playlist-title {
     display: flex;
-    flex-direction:row;
+    flex-direction: row;
     justify-content: center;
     margin: 1em 0 4em 0;
 }
@@ -61,11 +59,11 @@ button {
 }
 
 .light-color {
-    color: rgb(139,153,156);
+    color: rgb(139, 153, 156);
 }
 
 #progress-bar {
-    background-color: rgb(139,153,156);
+    background-color: rgb(139, 153, 156);
     height: 3px;
     width: 100%;
     border-radius: 15px;
