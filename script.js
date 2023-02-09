@@ -8,6 +8,7 @@ const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 const currentProgress = document.getElementById('current-progress');
 const progressContainer = document.getElementById('progress-container');
+const shuffleButton = document.getElementById('shuffle');
 
 
 const ImGood = {
@@ -29,9 +30,14 @@ const TheBusiness = {
 };
 
 let isPlaying = false;
+let isShuffled = false;
 
 /* Array */
 const playlist = [ImGood, DeepDown, TheBusiness];
+
+/* ... spred - espalha a playlist */
+let sortedPlaylist = [...playlist];
+
 let index = 0;
 
 /* Essa função faz tocar a musica mostrando o botão pause*/
@@ -100,6 +106,32 @@ function jumpTo(event) {
     song.currentTime = jumpToTime;
 }
 
+/* função que embaralha o array */
+function shuffleArray(preShuffleArray) {
+    const size = preShuffleArray.length; /* length indica o tamanho do array */
+    let currentIndex = size - 1;
+    while (currentIndex > 0) {
+        /*ao gerar um numero aleatorio o floor ignora tudo que estiver depois da virgula*/
+        let randomIndex = Math.floor(Math.random() * size);
+        let aux = preShuffleArray[currentIndex];
+        preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
+        preShuffleArray[randomIndex] = aux;
+        currentIndex -= 1;
+    }
+}
+
+function shuffleButtonCLicked() {
+    if (isShuffled === false) {
+        isShuffled = true;
+        shuffleArray(sortedPlaylist);
+        shuffleButton.classList.add('button-active');
+    } else {
+        isShuffled = false;
+        sortedPlaylist = [...playlist];
+        shuffleButton.classList.remove('button-active');
+    }
+}
+
 initializeSong();
 
 play.addEventListener('click', playPauseDecider);
@@ -107,3 +139,4 @@ previous.addEventListener('click', previousSong);
 next.addEventListener('click', nextSong);
 song.addEventListener('timeupdate', updateProgressBar);
 progressContainer.addEventListener('click', jumpTo);
+shuffleButton.addEventListener('click', shuffleButtonCLicked);
