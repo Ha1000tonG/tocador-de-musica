@@ -33,10 +33,10 @@ let isPlaying = false;
 let isShuffled = false;
 
 /* Array */
-const playlist = [ImGood, DeepDown, TheBusiness];
+const originalPlaylist = [ImGood, DeepDown, TheBusiness];
 
 /* ... spred - espalha a playlist */
-let sortedPlaylist = [...playlist];
+let sortedPlaylist = [...originalPlaylist];
 
 let index = 0;
 
@@ -65,15 +65,15 @@ function playPauseDecider() {
 }
 
 function initializeSong() {
-    cover.src = `imagens/${playlist[index].file}.webp`;
-    song.src = `musica/${playlist[index].file}.mp3`;
-    songName.innerText = playlist[index].songName;
-    bandName.innerText = playlist[index].artist;
+    cover.src = `imagens/${sortedPlaylist[index].file}.webp`;
+    song.src = `musica/${sortedPlaylist[index].file}.mp3`;
+    songName.innerText = sortedPlaylist[index].songName;
+    bandName.innerText = sortedPlaylist[index].artist;
 }
 
 function previousSong() {
     if (index === 0) {
-        index = playlist.length - 1;
+        index = sortedPlaylist.length - 1;
     } else {
         index -= 1;
         /* index = index - 1 outra maneira de usar */
@@ -83,7 +83,7 @@ function previousSong() {
 }
 
 function nextSong() {
-    if (index === playlist.length - 1) {
+    if (index === sortedPlaylist.length - 1) {
         index = 0;
     } else {
         index += 1;
@@ -127,7 +127,7 @@ function shuffleButtonCLicked() {
         shuffleButton.classList.add('button-active');
     } else {
         isShuffled = false;
-        sortedPlaylist = [...playlist];
+        sortedPlaylist = [...originalPlaylist];
         shuffleButton.classList.remove('button-active');
     }
 }

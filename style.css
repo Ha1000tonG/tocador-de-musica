@@ -81,12 +81,12 @@ button {
 }
 
 #progress-container {
-    padding-bottom: 1%;
+    padding-bottom: 1em;
     cursor: pointer;
 }
 
 .button-active {
-    color: rgb(0, 183, 107);
+    color: rgb(0, 128, 62);
 }
 
 :root {
