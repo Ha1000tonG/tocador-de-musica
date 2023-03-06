@@ -10,6 +10,8 @@ const currentProgress = document.getElementById('current-progress');
 const progressContainer = document.getElementById('progress-container');
 const shuffleButton = document.getElementById('shuffle');
 const repeatButton = document.getElementById('repeat');
+const songTime = document.getElementById('song-time');
+const totalTime = document.getElementById('total-time');
 
 
 const ImGood = {
@@ -96,9 +98,10 @@ function nextSong() {
 }
 
 /* função para progressão da barra confome a musica*/
-function updateProgressBar() {
+function updateProgress() {
     const barWidth = (song.currentTime / song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
+    songTime.innerText = toHHMMSS(song.currentTime);
 }
 /* função para pular a musica clicando na barra de progressão*/
 function jumpTo(event) {
@@ -152,13 +155,31 @@ function nextOrRepeat() {
     }
 }
 
+function toHHMMSS(originalNumber) {
+    /* A função Math.floor retorna o menor número inteiro após a virgula. */
+    let hours = Math.floor(originalNumber / 3600);
+    let min = Math.floor((originalNumber - hours * 3600) / 60);
+    let secs = Math.floor(originalNumber - hours * 3600 - min * 60);
+    /*alert((esse parametro mostra um popup na tela)*/
+    return `${hours.toString().padStart(2,'0')}:${min
+    .toString()
+    .padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
+    /* ); */
+}
+
+function updateTotalTime() {
+    toHHMMSS(song.duration);
+    totalTime.innerText = toHHMMSS(song.duration);
+}
+
 initializeSong();
 
 play.addEventListener('click', playPauseDecider);
 previous.addEventListener('click', previousSong);
 next.addEventListener('click', nextSong);
-song.addEventListener('timeupdate', updateProgressBar);
+song.addEventListener('timeupdate', updateProgress);
 song.addEventListener('ended', nextOrRepeat);
+song.addEventListener('loadedmetadata', updateTotalTime);
 progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener('click', shuffleButtonCLicked);
 repeatButton.addEventListener('click', repeatButtonClicket);
