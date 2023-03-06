@@ -81,13 +81,38 @@ button {
 }
 
 #progress-container {
-    padding-bottom: 1em;
     cursor: pointer;
 }
 
 .button-active {
     color: rgb(0, 128, 62);
 }
+
+#time-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: smaller;
+    margin-top: 0.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 :root {
     --primary-bg-color: #0F1119;
