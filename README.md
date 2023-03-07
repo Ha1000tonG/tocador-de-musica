@@ -8,7 +8,7 @@
 
 
 # Links:
-#### :star: [`Projeto concluido:`](https://ha1000tong.github.io/NavBar/) 
+#### :star: [`Projeto concluido:`]() 
 
 #
 Blog: Cursos Online hashtag
