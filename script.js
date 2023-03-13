@@ -16,21 +16,21 @@ const totalTime = document.getElementById('total-time');
 
 
 const ImGood = {
-    songName: 'Im Good',
+    songName: 'ImGood',
     artist: 'David Guetta',
-    file: 'Imgood',
+    file: 'ImGood',
     liked: false
 };
 
 const DeepDown = {
-    songName: 'Deep Down',
+    songName: 'DeepDown',
     artist: 'Alok',
     file: 'DeepDown',
     liked: false
 };
 
 const TheBusiness = {
-    songName: 'The Business',
+    songName: 'TheBusiness',
     artist: 'Tiesto',
     file: 'TheBusiness',
     liked: false
