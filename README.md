@@ -16,5 +16,4 @@ Blog: Cursos Online hashtag
 :star: [`Clique aqui para acessar o curso:`](https://www.hashtagtreinamentos.com/projeto-web-de-javascript#aula7)
 
 #
-<div align="center"> <img src="https://img.shields.io/github/license/dropbox/dropbox-sdk-java"/></div>  
-<div align="center"><img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=f8efd4&style=for-the-badge"/></div>
+<div align="center"> <img src="https://img.shields.io/github/license/dropbox/dropbox-sdk-java"/></div>
