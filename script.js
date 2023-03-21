@@ -40,18 +40,12 @@ let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
 
-/* Array */
 const originalPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [ImGood, DeepDown, TheBusiness];
-/* JSON.parse = parametros para deixar armazenado as informações das musicas mesmo depois de fechar o navegador */
-/* [ImGood, DeepDown, TheBusiness] comando substiuidos por JSON.parse */
-/* ?? essa condição serve paa caso não houver o armazenamento dos dados no navegador ele consiga ter uma outra função para chamar os dados que nesse caso seria as musicas da playlist */
 
-/* ... spred - espalha a playlist */
 let sortedPlaylist = [...originalPlaylist];
 
 let index = 0;
 
-/* Essa função faz tocar a musica mostrando o botão pause*/
 function playSong() {
     play.querySelector('.bi').classList.remove('bi-play-circle-fill');
     play.querySelector('.bi').classList.add('bi-pause-circle-fill');
@@ -59,7 +53,6 @@ function playSong() {
     isPlaying = true;
 }
 
-/* Essa função faz pausar a musica, mostrando o botão play */
 function pauseSong() {
     play.querySelector('.bi').classList.add('bi-play-circle-fill');
     play.querySelector('.bi').classList.remove('bi-pause-circle-fill');
@@ -92,7 +85,7 @@ function initializeSong() {
     song.src = `musica/${sortedPlaylist[index].file}.mp3`;
     songName.innerText = sortedPlaylist[index].songName;
     bandName.innerText = sortedPlaylist[index].artist;
-    likeButtonRender(); /*linha para chamar a função*/
+    likeButtonRender();
 }
 
 function previousSong() {
@@ -100,7 +93,6 @@ function previousSong() {
         index = sortedPlaylist.length - 1;
     } else {
         index -= 1;
-        /* index = index - 1 outra maneira de usar */
     }
     initializeSong();
     playSong();
@@ -111,19 +103,17 @@ function nextSong() {
         index = 0;
     } else {
         index += 1;
-        /* index = index + 1 outra maneira de usar */
     }
     initializeSong();
     playSong();
 }
 
-/* função para progressão da barra confome a musica*/
 function updateProgress() {
     const barWidth = (song.currentTime / song.duration) * 100;
     currentProgress.style.setProperty('--progress', `${barWidth}%`);
     songTime.innerText = toHHMMSS(song.currentTime);
 }
-/* função para pular a musica clicando na barra de progressão*/
+
 function jumpTo(event) {
     const width = progressContainer.clientWidth;
     const clickPosition = event.offsetX;
@@ -131,12 +121,10 @@ function jumpTo(event) {
     song.currentTime = jumpToTime;
 }
 
-/* função que embaralha o array */
 function shuffleArray(preShuffleArray) {
-    const size = preShuffleArray.length; /* length indica o tamanho do array */
+    const size = preShuffleArray.length;
     let currentIndex = size - 1;
     while (currentIndex > 0) {
-        /*ao gerar um numero aleatorio o floor ignora tudo que estiver depois da virgula*/
         let randomIndex = Math.floor(Math.random() * size);
         let aux = preShuffleArray[currentIndex];
         preShuffleArray[currentIndex] = preShuffleArray[randomIndex];
@@ -176,15 +164,13 @@ function nextOrRepeat() {
 }
 
 function toHHMMSS(originalNumber) {
-    /* A função Math.floor retorna o menor número inteiro após a virgula. */
     let hours = Math.floor(originalNumber / 3600);
     let min = Math.floor((originalNumber - hours * 3600) / 60);
     let secs = Math.floor(originalNumber - hours * 3600 - min * 60);
-    /*alert((esse parametro mostra um popup na tela)*/
+
     return `${hours.toString().padStart(2, '0')}:${min
         .toString()
         .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    /* ); */
 }
 
 function updateTotalTime() {
@@ -200,8 +186,6 @@ function likeButtonClicked() {
     }
     likeButtonRender();
     localStorage.setItem('playlist', JSON.stringify(originalPlaylist));
-    /* localStorage = armazenamento local do navegador / setItem = registra um item*/
-    /* JSON.stringify = comando que transforma em string*/
 }
 
 initializeSong();
